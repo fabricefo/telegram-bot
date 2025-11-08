@@ -48,7 +48,7 @@ jobs:
         REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
         REPO_NAME=$(basename "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
         IMAGE_TAG=${{ steps.vars.outputs.tag }}
-        docker build --no-cache --tag ghcr.io/${REPO_OWNER}/${REPO_NAME}:${IMAGE_TAG}
+        docker build --no-cache --tag ghcr.io/${REPO_OWNER}/${REPO_NAME}:${IMAGE_TAG} .
         docker tag ghcr.io/${REPO_OWNER}/${REPO_NAME}:${IMAGE_TAG} ghcr.io/${REPO_OWNER}/${REPO_NAME}:latest
 
     - name: Push Docker image
