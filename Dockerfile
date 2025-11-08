@@ -5,8 +5,7 @@ FROM python:3.11-slim
 WORKDIR /
 
 # Étape 3 : copier les fichiers du projet
-COPY requirements.txt requirements.txt
-COPY app/bot.py app/bot.py
+COPY . .
 
 # Étape 4 : installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
