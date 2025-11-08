@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8050
 
 # Étape 5 : exécuter le bot
-CMD ["python", "bot.py"]
+CMD ["python", "app/bot.py"]
