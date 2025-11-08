@@ -1,7 +1,24 @@
+import os
+
+# Charger .env si python-dotenv est installé (optionnel)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    # dotenv absent ou échec de chargement -> continuer, on utilisera les variables d'environnement
+    pass
+
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
-TOKEN = "7828218009:AAEbNy4fpzdyGW44lJ3VKVWTu1moBwXXpyA"  # 🔑 Mets ton token ici
+# Récupère le token depuis la variable d'environnement TELEGRAM_TOKEN
+TOKEN = os.environ.get("TELEGRAM_TOKEN")
+if not TOKEN:
+    raise SystemExit(
+        "ERREUR: la variable d'environnement TELEGRAM_TOKEN n'est pas définie.\n"
+        "Définissez-la avant d'exécuter le bot, par exemple (PowerShell):\n"
+        "$env:TELEGRAM_TOKEN = \"<votre_token_ici>\"; python .\\bot.py"
+    )
 
 # Commande /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -20,6 +37,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif "comment" in text and "ça va" in text:
         response = "Je vais super bien 🤖 et toi ?"
     else:
+
         response = f"Tu as dit : {update.message.text}"
 
     await update.message.reply_text(response)
