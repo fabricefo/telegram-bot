@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Étape 2 : définir le répertoire de travail
-WORKDIR /app
+WORKDIR /
 
 # Étape 3 : copier les fichiers du projet
 COPY requirements.txt requirements.txt
