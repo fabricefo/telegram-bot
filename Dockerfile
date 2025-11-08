@@ -2,7 +2,7 @@
 FROM python:3.11-slim
 
 # Étape 2 : définir le répertoire de travail
-WORKDIR /
+# WORKDIR /
 
 # Étape 3 : copier les fichiers du projet
 COPY . .
@@ -13,4 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8050
 
 # Étape 5 : exécuter le bot
-CMD ["python", "app/bot.py"]
+CMD ["python", "bot.py"]
